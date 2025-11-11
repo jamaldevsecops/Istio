@@ -43,10 +43,40 @@ istioctl install --set profile=demo -y
 ```bash
 istioctl install --set profile=default -y
 ```
+Example Output:
+```
+        |\
+        | \
+        |  \
+        |   \
+      /||    \
+     / ||     \
+    /  ||      \
+   /   ||       \
+  /    ||        \
+ /     ||         \
+/______||__________\
+____________________
+  \__       _____/
+     \_____/
+
+✔ Istio core installed ⛵️
+✔ Istiod installed 🧠
+✔ Egress gateways installed 🛫
+✔ Ingress gateways installed 🛬
+✔ Installation complete
+```
 
 Check components:
 ```bash
 kubectl -n istio-system get pods
+```
+Example Output: 
+```
+NAME                                    READY   STATUS    RESTARTS   AGE
+istio-egressgateway-5dcfcd4f76-726qz    1/1     Running   0          4h1m
+istio-ingressgateway-54b44bc89d-zpfs6   1/1     Running   0          4h1m
+istiod-567d49697-g4nbr                  1/1     Running   0          4h1m
 ```
 You should see `istiod` and (for demo) `istio-ingressgateway`.
 
