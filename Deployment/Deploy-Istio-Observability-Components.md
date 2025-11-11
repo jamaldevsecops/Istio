@@ -3,7 +3,7 @@
 ## 🧩 Prerequisites
 
 Before proceeding, ensure:
-- ✅ Istio is installed and running (per [previous setup guide](./istio_installation_guide.md))
+- ✅ Istio is installed and running (per [previous setup guide](./Deploy-Istio-Service-Mesh-on-Kubernetes.md))
 - ✅ `kubectl` configured for your cluster
 - ✅ Istio ingress gateway (`istio-ingressgateway`) is active in `istio-system`
 - ✅ DNS or `/etc/hosts` entries for local domain access
