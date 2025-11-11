@@ -92,6 +92,15 @@ kubectl get namespace bookinfo --show-labels
 ```
 Expect to see `istio-injection=enabled`.
 
+### 🚪 Install the Kubernetes Gateway API CRDs
+The Kubernetes Gateway API CRDs do not come installed by default on most Kubernetes clusters, so make sure they are installed before using the Gateway API.
+
+Install the Gateway API CRDs, if they are not already present:
+```bash
+kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
+{ kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.4.0" | kubectl apply -f -; }
+```
+
 ### 7) 📘 (Optional) Deploy Bookinfo sample app
 From the extracted Istio folder:
 ```bash
