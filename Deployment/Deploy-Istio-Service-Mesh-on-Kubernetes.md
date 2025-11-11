@@ -108,10 +108,25 @@ kubectl apply -n bookinfo -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -n bookinfo -f samples/bookinfo/networking/bookinfo-gateway.yaml
 kubectl get pods -n bookinfo
 ```
+Example Output: 
+```
+NAME                              READY   STATUS    RESTARTS   AGE
+details-v1-766844796b-4trsg       2/2     Running   0          5m9s
+productpage-v1-54bb874995-tdqmr   2/2     Running   0          5m9s
+ratings-v1-5dc79b6bcd-v6nqp       2/2     Running   0          5m9s
+reviews-v1-598b896c9d-vf2nt       2/2     Running   0          5m9s
+reviews-v2-556d6457d-fvscl        2/2     Running   0          5m9s
+reviews-v3-564544b4d6-26p48       2/2     Running   0          5m9s
+```
 
 ### 8) 🌐 Get ingress address & test
 ```bash
 kubectl -n istio-system get svc istio-ingressgateway
+```
+Example Output:
+```
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)                                                                      AGE
+istio-ingressgateway   LoadBalancer   10.104.115.93   192.168.20.161   15021:30216/TCP,80:32377/TCP,443:32008/TCP,31400:32347/TCP,15443:31302/TCP   4h37m
 ```
 - **Cloud**: use `EXTERNAL-IP` → `http://<EXTERNAL-IP>/productpage`
 - **Minikube**: run `minikube tunnel`, then open `http://localhost/productpage`
@@ -123,9 +138,15 @@ kubectl -n istio-system port-forward svc/istio-ingressgateway 8080:80
 
 ### 9) 🔍 Verify install
 ```bash
-istioctl verify-install
+istioctl version
+```
+Example Output: 
 ```
 
+```
+client version: 1.28.0
+control plane version: 1.28.0
+data plane version: 1.28.0 (8 proxies)
 ---
 
 ## 🧰 B) Alternate Install via **Helm**
